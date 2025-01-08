@@ -24,10 +24,12 @@ except ImportError:
 displayio.release_displays()
 
 spi = board.SPI()
-tft_cs = board.CE0
-tft_dc = board.D25
+#tft_cs = board.CE0
+tft_cs = None
+tft_dc = board.D40
+tft_reset = board.D38
 
-display_bus = FourWire(spi, command=tft_dc, chip_select=tft_cs)
+display_bus = FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=tft_reset)
 display = adafruit_ili9341.ILI9341(display_bus, width=320, height=240)
 
 # Make the display context

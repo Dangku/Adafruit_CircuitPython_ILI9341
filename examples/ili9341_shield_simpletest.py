@@ -29,10 +29,12 @@ spi = board.SPI()
 # import busio
 # spi = busio.SPI(board.D11, board.D13)
 
-tft_cs = board.D10
-tft_dc = board.D9
+#tft_cs = board.D10
+tft_cs = None
+tft_dc = board.D40
+tft_reset = board.D38
 
-display_bus = FourWire(spi, command=tft_dc, chip_select=tft_cs)
+display_bus = FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=tft_reset)
 display = adafruit_ili9341.ILI9341(display_bus, width=320, height=240)
 
 # Make the display context
